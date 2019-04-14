@@ -23,3 +23,8 @@ before_install:
 script:
   - docker run eu.gcr.io/docker-kubernetes-237606/jsdevtom/react-test npm test -- --coverage
 
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
