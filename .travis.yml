@@ -16,3 +16,10 @@ before_install:
   - gcloud config set project docker-kubernetes-237606
   - gcloud config set compute/zone europe-north1-a
   - gcloud container clusters get-credentials docker-kubernetes
+    # Log into GCR
+  - yes | gcloud auth configure-docker
+  - docker build -t eu.gcr.io/docker-kubernetes-237606/jsdevtom/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run eu.gcr.io/docker-kubernetes-237606/jsdevtom/react-test npm test -- --coverage
+
