@@ -15,3 +15,4 @@ before_install:
   - gcloud auth activate-service-account --key-file docker-kubernetes-237606-66548918b455.json
   - gcloud config set project docker-kubernetes-237606
   - gcloud config set compute/zone europe-north1-a
+  - gcloud container clusters get-credentials docker-kubernetes
